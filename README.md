@@ -23,7 +23,7 @@ npm run dev
 
 1.Each branch in the repository corresponds to a specific exercise in the weekly assignment.
 
-2.The "master" branch contains the initial setup of the project with Vue Js, Bulma, and Express Js.
+2.The "main" branch contains the initial setup of the project with Vue Js, Bulma, and Express Js.
 
 3.To view the answers for a specific exercise, switch to the corresponding branch using:
 ```bash
