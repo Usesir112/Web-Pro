@@ -41,4 +41,4 @@ git checkout <branch_name>
 If you have any questions or issues, please contact me at phattarkorn.yen@gmail.com
 
 ## License
-This project is licensed under the [MIT License](https://vuejs.org/).
+This project is licensed under the [MIT License](https://github.com/Usesir112/Web-Pro/blob/main/LICENSE).
