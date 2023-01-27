@@ -6,12 +6,17 @@ function save () {
         { name: "Jill Schmitt", age: 32 },
         { name: "Anita Rose", age: 44 },
     ]
+    localStorage.setItem("people", JSON.stringify(people));
 }
 
 function read () {
     // TODO: อ่านค่า people จาก Local Storage
+    let data = localStorage.getItem("people");
+    let obj = JSON.parse(data);
+    return obj;
 }
 
 function remove () {
     // TODO: ลบ people จาก Local Storage
+    localStorage.removeItem("people");
 }
