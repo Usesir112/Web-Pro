@@ -7,20 +7,25 @@ function app1() {
     }, 1000);
   }
 
+  // 5th
   const second = setTimeout(() => {
     console.log(2);
   }, 1500);
 
+  // 4th
   var third = setTimeout(() => {
     console.log(3);
   }, 1000);
 
+  // 3rd
   setTimeout(() => {
     console.log(4);
   }, 0);
 
+  // 1st 
   console.log(5);
 
+  // 6th
   setTimeout(() => {
     console.log(5 + 1);
   }, 2000);
@@ -29,6 +34,7 @@ function app1() {
     console.log(data);
   }
 
+  // 2nd
   function calculator(num1, num2, callback) {
     var sum = num1 + num2;
     callback(sum);
