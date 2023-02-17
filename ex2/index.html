@@ -32,47 +32,48 @@
 
             <!-- Column แสดงสินค้า--------------------------------------------------------->
             <div class="column is-8 pt-6">
-                <h1 class="is-size-4 mb-4">All Products ()</h1>
+                <h1 class="is-size-4 mb-4">All Products ({{products.length}})</h1>
                 <div class="container is-max-desktop">
                     <div class="is-multiline columns is-variable is-2">
 
                         <!-- Card element start here------------------------------------------>
-                        <div id="card_product" class="column is-one-quarter">
+                        <div v-for="product in products" :key="product.title" id="card_product"
+                            class="column is-one-quarter">
                             <div class="card">
                                 <div class="card-image">
                                     <figure class="image is-1by1">
-                                        <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                                            alt="Placeholder image">
+                                        <img :src="product.image" :alt="product.title">
                                     </figure>
                                 </div>
-                                <div class="card-content">
+                                <div class="card-content" :class="{'has-background-warning-light':product.is_favorite}">
                                     <div class="media">
                                         <div class="media-content">
-                                            <p id="title" class="title is-4">iPhone 11</p>
-                                            <p id="brand" class="subtitle is-6">Apple</p>
-                                            <p class="subtitle is-6 has-text-danger">34900 ฿</p>
+                                            <p id="title" class="title is-4">{{product.title}}</p>
+                                            <p id="brand" class="subtitle is-6">{{product.brand}}</p>
+                                            <p class="subtitle is-6 has-text-danger">{{product.price}}</p>
                                         </div>
                                     </div>
 
                                     <div style="display: flex;justify-content: space-between;">
 
                                         <!-- คลิกที่ดาว หาก is_favorite = true ให้แสดงดาว v1 ถ้า is_favorite = false ---------->
-                                        <div class="icon is-size-4">
+                                        <div @click="product.is_favorite == true ? product.is_favorite = false : product.is_favorite = true"
+                                            class="icon is-size-4">
 
                                             <!-- star ทึบ -->
-                                            <span class="icon" key="true">
+                                            <span v-show="product.is_favorite == true " class="icon" key="true">
                                                 <i class="fas fa-star has-text-warning"></i>
                                             </span>
 
                                             <!-- star ใส -->
-                                            <span key="false">
+                                            <span v-show="product.is_favorite == false " key="false">
                                                 <i class="far fa-star has-text-warning"></i>
                                             </span>
 
                                         </div>
 
                                         <!-- ไอคอนรูปตะกร้า -->
-                                        <div class="icon is-size-4">
+                                        <div @click="cart.push(product)" class="icon is-size-4">
                                             <i class="fas fa-shopping-cart has-text-warning"></i>
                                         </div>
 
@@ -90,24 +91,26 @@
             <!-- Column แสดงตะกร้า--------------------------------------------------->
             <div class="column is-3 pt-6 pl-0 pr-5">
                 <div style="display: flex;justify-content: space-between;">
-                    <span class="is-size-4 mb-4">Cart ()</span>
-                    <a class="is-danger mb-4 button">Clear</a>
+                    <span class="is-size-4 mb-4">Cart ({{cart.length}})</span>
+                    <a @click="cart.splice(0)" class="is-danger mb-4 button">Clear</a>
                 </div>
 
                 <!-- Card element start here------------------------------------------>
-                <div class="card mb-4">
+                <div v-for="item in cart"
+                :key="item.title"
+                class="card mb-4">
                     <div class="card-content p-0">
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-96x96">
-                                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                                        alt="Placeholder image">
+                                    <img :src="item.image"
+                                        :alt="item.title">
                                 </figure>
                             </div>
                             <div class="media-content pt-2">
-                                <p class="is-5">iPhone 11</p>
-                                <p class="has-text-grey-light is-6">Apple</p>
-                                <p class="is-6 has-text-danger">34900</p>
+                                <p class="is-5">{{item.title}}</p>
+                                <p class="has-text-grey-light is-6">{{item.brand}}</p>
+                                <p class="is-6 has-text-danger">{{item.price}}</p>
                             </div>
                         </div>
                     </div>
@@ -179,8 +182,8 @@
                     <hr>
                     <figure class="image is-16by9">
                         <img src="./result (2).gif">
-                      </figure>
-                    
+                    </figure>
+
                 </section>
             </div>
         </div>
